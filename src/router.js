@@ -15,8 +15,8 @@ export default new Router({
       name: 'components',
       components: {
         header: AppHeader,
-        default: Index,
-        footer: AppFooter
+        default: Index
+        // footer: AppFooter
       }
     }
     // {
