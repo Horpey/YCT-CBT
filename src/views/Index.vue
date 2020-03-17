@@ -11,7 +11,7 @@
       <div class="row justify-content-start">
         <div class="col-lg-7">
           <div class="text-white">
-            <h1 class="txt-bold text-white">GET READY.EXPERIENCE CBT</h1>
+            <h1 class="txt-bold txt-theme-dk">GET READY.EXPERIENCE CBT</h1>
             <p
               class="mb-4"
             >Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nam possimus vitae nulla natus corrupti ratione dignissimos reiciendis! Nulla nihil eius eaque aliquid beatae laboriosam illo officiis, eum officia? Numquam, explicabo.</p>

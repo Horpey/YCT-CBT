@@ -4,6 +4,7 @@ import AppHeader from './layout/AppHeader';
 import AppFooter from './layout/AppFooter';
 import Components from './views/Components.vue';
 import Index from './views/Index.vue';
+import Auth from './views/Auth.vue';
 
 Vue.use(Router);
 
@@ -12,10 +13,18 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'components',
+      name: 'index',
       components: {
         header: AppHeader,
         default: Index
+        // footer: AppFooter
+      }
+    },
+    {
+      path: '/auth',
+      name: 'auth',
+      components: {
+        default: Auth
         // footer: AppFooter
       }
     }

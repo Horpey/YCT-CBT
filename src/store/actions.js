@@ -1,33 +1,31 @@
 import axios from 'axios';
 
-const baseURL = '';
+const baseURL = 'https://postutme.herokuapp.com/api/';
 
 export const actions = {
   login({ commit, dispatch }, user) {
     return new Promise((resolve, reject) => {
       commit('auth_request');
       let userData = new FormData();
-      userData.append('email', user.email);
+      userData.append('reg', user.reg);
       userData.append('password', user.password);
 
       axios({
-        url: baseURL + '/accounts/login/',
+        url: baseURL + 'auth/login',
         data: userData,
         method: 'POST'
       })
         .then(resp => {
-          const token = resp.data.token;
-          const user = resp.data.user;
+          console.log(resp.data);
+          const token = resp.data.access_token;
           localStorage.setItem('token', token);
           axios.defaults.headers.common['Authorization'] = token;
-          commit('auth_success', token, user);
-          dispatch('getUser');
-          commit('loading', false);
+          commit('auth_success', token);
           resolve(resp);
         })
         .catch(err => {
+          console.log(err.status);
           commit('auth_error');
-          commit('loading', false);
           localStorage.removeItem('token');
           reject(err);
         });

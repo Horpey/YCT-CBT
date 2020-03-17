@@ -1,20 +1,3 @@
-/*!
-
-=========================================================
-* Vue Argon Design System - v1.1.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/argon-design-system
-* Copyright 2019 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://github.com/creativetimofficial/argon-design-system/blob/master/LICENSE.md)
-
-* Coded by www.creative-tim.com
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
 import Vue from 'vue';
 import App from './App.vue';
 import router from './router';
@@ -27,9 +10,28 @@ Vue.use(require('vue-moment'));
 import VueSkeletonLoading from 'vue-skeleton-loading';
 import Axios from 'axios';
 
+import VueNotifications from 'vue-notifications';
+import iziToast from 'izitoast'; // https://github.com/dolce/iziToast
+import 'izitoast/dist/css/iziToast.min.css';
+
 Vue.config.productionTip = false;
 Vue.use(Argon);
 Vue.use(VueSkeletonLoading);
+
+// Vue Notifications
+function toast({ title, message, type, timeout, cb }) {
+  if (type === VueNotifications.types.warn) type = 'warning';
+  return iziToast[type]({ title, message, timeout });
+}
+
+const options = {
+  success: toast,
+  error: toast,
+  info: toast,
+  warn: toast
+};
+
+Vue.use(VueNotifications, options);
 
 // Auth
 Vue.prototype.$http = Axios;
