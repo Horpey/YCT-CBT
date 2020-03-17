@@ -1,9 +1,12 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import AppHeader from './layout/AppHeader';
-import AppFooter from './layout/AppFooter';
+import TopBar from './layout/TopBar';
+import AppFoot from './layout/AppFoot';
 import Components from './views/Components.vue';
 import Index from './views/Index.vue';
+import App from './views/App.vue';
+
 import Auth from './views/Auth.vue';
 
 Vue.use(Router);
@@ -27,16 +30,16 @@ export default new Router({
         default: Auth
         // footer: AppFooter
       }
+    },
+    {
+      path: '/app',
+      name: 'app',
+      components: {
+        header: TopBar,
+        default: App,
+        footer: AppFoot
+      }
     }
-    // {
-    //   path: '/landing',
-    //   name: 'landing',
-    //   components: {
-    //     header: AppHeader,
-    //     default: Landing,
-    //     footer: AppFooter
-    //   }
-    // }
   ],
   scrollBehavior: to => {
     if (to.hash) {

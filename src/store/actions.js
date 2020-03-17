@@ -84,35 +84,39 @@ export const actions = {
         });
     });
   },
-  registerUser({ commit, dispatch }, user) {
+  signup({ commit, dispatch }, user) {
     return new Promise((resolve, reject) => {
       commit('auth_request');
-
       var userData = new FormData();
-      userData.append('full_name', user.full_name);
       userData.append('email', user.email);
+      userData.append('name', user.name);
+      userData.append('reg', user.reg);
       userData.append('password', user.password);
-      userData.append('school', user.school);
+      userData.append('schoolId', user.schoolId);
+      userData.append('department', user.department);
+      userData.append('phone', user.phone);
 
       axios({
-        url: baseURL + '/accounts/register/',
+        url: baseURL + 'auth/signup',
         data: userData,
         method: 'POST'
       })
         .then(resp => {
-          const token = resp.data.data.token;
-          const user = resp.data.data.data;
-          localStorage.setItem('token', token);
-          dispatch('getUser');
-          axios.defaults.headers.common['Authorization'] = token;
-          commit('auth_success', token, user);
-          commit('loading', false);
+          console.log(resp);
+          // const token = resp.data.data.token;
+          // const user = resp.data.data.data;
+          // localStorage.setItem('token', token);
+          // dispatch('getUser');
+          // axios.defaults.headers.common['Authorization'] = token;
+          // commit('auth_success', token, user);
+          // commit('loading', false);
           resolve(resp);
         })
         .catch(err => {
-          commit('auth_error');
-          commit('loading', false);
-          localStorage.removeItem('token');
+          // console.log(err);
+          // commit('auth_error');
+          // commit('loading', false);
+          // localStorage.removeItem('token');
           reject(err);
         });
     });

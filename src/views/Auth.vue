@@ -21,59 +21,30 @@
                   <div class="row">
                     <div class="col-md-6 pr-0">
                       <label class="small mb-1">Full Name</label>
-                      <base-input
-                        v-model="rfullname"
-                        class="mb-3"
-                        placeholder=""
-                      ></base-input>
+                      <base-input v-model="rfullname" class="mb-3" placeholder></base-input>
                     </div>
                     <div class="col-md-6 pr-0">
-                      <label class="small mb-1"
-                        >JAMB registeration number</label
-                      >
-                      <base-input
-                        v-model="rjambreg"
-                        class="mb-3"
-                        placeholder=""
-                      ></base-input>
+                      <label class="small mb-1">JAMB registeration number</label>
+                      <base-input v-model="rjambreg" class="mb-3" placeholder></base-input>
                     </div>
                     <div class="col-md-6 pr-0">
                       <label class="small mb-1">Email Address</label>
-                      <base-input
-                        v-model="remail"
-                        class="mb-3"
-                        placeholder=""
-                        type="email"
-                      ></base-input>
+                      <base-input v-model="remail" class="mb-3" placeholder type="email"></base-input>
                     </div>
                     <div class="col-md-6 pr-0">
                       <label class="small mb-1">Phone Number</label>
-                      <base-input
-                        v-model="rphone"
-                        class="mb-3"
-                        placeholder=""
-                      ></base-input>
+                      <base-input v-model="rphone" class="mb-3" placeholder></base-input>
                     </div>
                     <div class="col-md-6 pr-0">
                       <label class="small mb-1">School</label>
-                      <select
-                        v-model="rschool"
-                        class="form-control mb-3"
-                        name=""
-                        id=""
-                      >
+                      <select v-model="rschool" class="form-control mb-3" name>
                         <option>School of Technology</option>
                         <option>School of Engineering</option>
                       </select>
                     </div>
                     <div class="col-md-6 pr-0">
                       <label class="small mb-1">Department</label>
-                      <select
-                        v-model="rdept"
-                        class="form-control mb-3"
-                        name=""
-                        id=""
-                      >
+                      <select v-model="rdept" class="form-control mb-3" name>
                         <option>Computer Science</option>
                         <option>Food and Nutrition</option>
                       </select>
@@ -97,23 +68,24 @@
                       ></base-input>
                     </div>
                   </div>
-                  <!-- 
+
                   <div class="mb-3 logtxt">
                     <p class="small text-danger mt-0">
-                      <span v-if="passwordEmpty">
-                        <i class="fa fa-info-circle mr-1"></i>{{ passwordTxt }}
+                      <span v-if="allFields">
+                        <i class="fa fa-info-circle mr-1"></i>
+                        {{ signtxt }}
                       </span>
                     </p>
-                  </div> -->
+                  </div>
                   <div class="mt-5">
                     <button
-                      :disabled="btndisable"
+                      :disabled="rbtndisable"
                       type="submit"
                       class="btn btn-primary btn-block text-white"
                     >
                       Sign Up
                       <img
-                        v-if="loading"
+                        v-if="rloading"
                         class="ml-2"
                         src="img/custom/loaderlight.svg"
                         alt="logo"
@@ -133,30 +105,23 @@
                 <span slot="title">Login</span>
                 <form class="pt-3" @submit.prevent="login">
                   <label class="small mb-1">JAMB registeration number</label>
-                  <base-input
-                    v-model="reg"
-                    class="mb-1"
-                    placeholder=""
-                  ></base-input>
+                  <base-input v-model="reg" class="mb-1" placeholder></base-input>
 
                   <div class="mb-3 logtxt">
                     <p class="small text-danger mb-0 mt-0">
                       <span v-if="regEmpty">
-                        <i class="fa fa-info-circle mr-1"></i>{{ regTxt }}
+                        <i class="fa fa-info-circle mr-1"></i>
+                        {{ regTxt }}
                       </span>
                     </p>
                   </div>
                   <label class="small mb-1">Password</label>
-                  <base-input
-                    v-model="password"
-                    type="password"
-                    class="mb-1"
-                    placeholder=""
-                  ></base-input>
+                  <base-input v-model="password" type="password" class="mb-1" placeholder></base-input>
                   <div class="mb-3 logtxt">
                     <p class="small text-danger mt-0">
                       <span v-if="passwordEmpty">
-                        <i class="fa fa-info-circle mr-1"></i>{{ passwordTxt }}
+                        <i class="fa fa-info-circle mr-1"></i>
+                        {{ passwordTxt }}
                       </span>
                     </p>
                   </div>
@@ -179,8 +144,7 @@
                       <router-link
                         class="text-success small text-dark"
                         to="/auth-password"
-                        >Forgot Password</router-link
-                      >
+                      >Forgot Password</router-link>
                     </div>
                   </div>
                 </form>
@@ -191,65 +155,77 @@
           <!-- <div class="text-center small" style="margin-top: 80px;">
             <a class="text-dark" href="#">Terms of Use</a> .
             <a class="text-dark" href="#">Privacy Policy</a>
-          </div> -->
+          </div>-->
         </div>
       </div>
     </div>
   </div>
 </template>
 <script>
-import Tab from '../components/Tabs/Tab';
-import TabPane from '../components/Tabs/TabPane';
-import Tabs from '../components/Tabs/Tabs';
-import VueNotifications from 'vue-notifications';
+import Tab from "../components/Tabs/Tab";
+import TabPane from "../components/Tabs/TabPane";
+import Tabs from "../components/Tabs/Tabs";
+import VueNotifications from "vue-notifications";
 
 // Custom Component
-import LoaderLight from './utility/LoaderLight';
+import LoaderLight from "./utility/LoaderLight";
 
 export default {
-  name: 'auth',
+  name: "auth",
   components: {
     tabs: Tabs,
-    'tab-pane': TabPane,
+    "tab-pane": TabPane,
     loader: LoaderLight
   },
 
   data() {
     return {
-      reg: '',
-      password: '',
+      reg: "",
+      password: "",
       regEmpty: false,
+      allFields: false,
+      signtxt: "",
+      rbtndisable: false,
       passwordEmpty: false,
       loading: false,
+      rloading: false,
       btndisable: false,
-      regTxt: '',
-      passwordTxt: ''
+      regTxt: "",
+      passwordTxt: "",
+      rfullname: "",
+      rjambreg: "",
+      remail: "",
+      rphone: "",
+      rschool: "",
+      rdept: "",
+      rpass: "",
+      rconfirmpass: ""
     };
   },
   methods: {
     login() {
       let reg = this.reg;
       let password = this.password;
-      if (this.reg !== '' && this.password !== '') {
+      if (this.reg !== "" && this.password !== "") {
         this.regEmpty = false;
         this.passwordEmpty = false;
         // Call Login Action
         this.loading = true;
         this.btndisable = true;
         this.$store
-          .dispatch('login', { reg, password })
+          .dispatch("login", { reg, password })
           .then(resp => {
             this.loading = false;
             this.btndisable = false;
             if (resp.data.status == true) {
-              this.showSuccessMsg({ message: 'Login Successful' });
+              this.showSuccessMsg({ message: "Login Successful" });
             } else {
               this.showWarnMsg({ message: resp.data.message });
 
-              if (resp.data.message.includes('Jamb')) {
+              if (resp.data.message.includes("Jamb")) {
                 this.regEmpty = true;
                 this.regTxt = resp.data.message;
-              } else if (resp.data.message.includes('password')) {
+              } else if (resp.data.message.includes("password")) {
                 this.passwordEmpty = true;
                 this.passwordTxt = resp.data.message;
               }
@@ -258,46 +234,117 @@ export default {
           .catch(err => {
             this.loading = false;
             this.btndisable = false;
-            this.showErrorMsg({ message: 'Unable to Login' });
+            this.showErrorMsg({ message: "Unable to Login" });
           });
       } else {
-        if (this.reg == '') {
+        if (this.reg == "") {
           this.regEmpty = true;
-          this.regTxt = 'Enter your JAMB registeration number to login';
+          this.regTxt = "Enter your JAMB registeration number to login";
         }
-        if (this.password == '') {
+        if (this.password == "") {
           this.passwordEmpty = true;
-          this.passwordTxt = 'Enter Password to login';
+          this.passwordTxt = "Enter Password to login";
         }
       }
+    },
+    signup() {
+      if (
+        this.rfullname == "" ||
+        this.rjambreg == "" ||
+        this.remail == "" ||
+        this.rphone == "" ||
+        this.rschool == "" ||
+        this.rdept == "" ||
+        this.rpass == "" ||
+        this.rconfirmpass == ""
+      ) {
+        this.allFields = true;
+        this.signtxt = "Kindly fill all fields";
+      } else {
+        console.log("FIlled");
+        if (this.rpass == this.rconfirmpass) {
+          this.allFields = false;
+          this.signtxt = "";
+          this.sendsignup();
+        } else {
+          console.log("Password not match");
+          this.allFields = true;
+          this.signtxt = "Password does not match";
+        }
+      }
+    },
+    sendsignup() {
+      let email = this.remail;
+      let name = this.rfullname;
+      let reg = this.rjambreg;
+      let password = this.rpass;
+      let schoolId = this.rschool;
+      let department = this.rdept;
+      let phone = this.rphone;
+
+      this.rloading = true;
+      this.rbtndisable = true;
+      this.$store
+        .dispatch("signup", {
+          email,
+          name,
+          reg,
+          password,
+          schoolId,
+          department,
+          phone
+        })
+        .then(resp => {
+          this.rloading = false;
+          this.rbtndisable = false;
+          // if (resp.data.status == true) {
+          //   this.showSuccessMsg({ message: 'Login Successful' });
+          // } else {
+          //   this.showWarnMsg({ message: resp.data.message });
+
+          //   if (resp.data.message.includes('Jamb')) {
+          //     this.regEmpty = true;
+          //     this.regTxt = resp.data.message;
+          //   } else if (resp.data.message.includes('password')) {
+          //     this.passwordEmpty = true;
+          //     this.passwordTxt = resp.data.message;
+          //   }
+          // }
+        })
+        .catch(err => {
+          // console.log('error');
+          this.rloading = false;
+          this.rbtndisable = false;
+          this.showErrorMsg({ message: "Unable to Sign up" });
+        });
     }
   },
   notifications: {
     showSuccessMsg: {
       type: VueNotifications.types.success,
-      title: '',
+      title: "",
       message: "That's the success!"
     },
     showInfoMsg: {
       type: VueNotifications.types.info,
-      title: '',
-      message: 'Here is some info for you'
+      title: "",
+      message: "Here is some info for you"
     },
     showWarnMsg: {
       type: VueNotifications.types.warn,
-      title: '',
+      title: "",
       message: "That's the kind of warning"
     },
     showErrorMsg: {
       type: VueNotifications.types.error,
-      title: '',
+      title: "",
       message: "That's the error"
     }
   }
 };
 </script>
 <style lang="scss" scoped>
-@import '../assets/scss/site/style.scss';
+@import "../assets/scss/site/style.scss";
 .nav-pills .nav-link.active {
   background-color: #00923f !important;
 }
