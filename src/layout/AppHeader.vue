@@ -15,15 +15,10 @@
           <close-button @click="closeMenu"></close-button>
         </div>
       </div>
-
+      <!-- d-none d-lg-block  -->
       <ul class="navbar-nav align-items-lg-center ml-lg-auto">
-        <li class="nav-item d-none d-lg-block ml-lg-4">
-          <!-- <base-button
-            class="text-capitalize btn-nav-line text-white"
-            outline
-            type="success"
-          >Get Started</base-button>-->
-          <a class="btn btn-white">Get Started</a>
+        <li class="nav-item ml-lg-4">
+          <router-link to="/auth" class="btn btn-white">Get Started</router-link>
         </li>
       </ul>
     </base-nav>

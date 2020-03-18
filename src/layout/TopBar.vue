@@ -18,10 +18,10 @@
 
       <ul class="navbar-nav align-items-lg-center ml-lg-auto">
         <li class="nav-item d-none d-lg-block ml-lg-4">
-          <a href="#" class="text-white">Profile</a>
+          <router-link to="/app/profile" class="text-white">Profile</router-link>
         </li>
         <li class="nav-item d-none d-lg-block ml-lg-4">
-          <a class="btn btn-white">Sign out</a>
+          <router-link to="/" class="btn btn-white">Sign out</router-link>
         </li>
       </ul>
     </base-nav>

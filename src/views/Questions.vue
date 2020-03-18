@@ -12,7 +12,7 @@
               </h6>
             </div>
             <div class="col-md-6 text-right">
-              <button class="btn btn-primary btn-lg">Submit</button>
+              <router-link to="/app/result" class="btn btn-primary btn-lg">Submit</router-link>
             </div>
           </div>
           <div class="row mt-4">

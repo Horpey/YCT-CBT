@@ -21,8 +21,11 @@
               <badge type="primary">Ratio</badge>
             </div>
             <hr />
-            <a href="#" class="btn btn-white mt-3">Take another Quiz</a>
-            <a href="#" class="btn btn-primary text-white mt-3">Proceed to Dashboard</a>
+            <router-link to="/app/" class="btn btn-white mt-3">Take another Quiz</router-link>
+            <router-link
+              to="/app/profile"
+              class="btn btn-primary text-white mt-3"
+            >Proceed to Dashboard</router-link>
           </div>
         </div>
       </div>

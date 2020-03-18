@@ -6,7 +6,10 @@
           class="text-center authsidebg"
           style="background: linear-gradient(45deg, #000000d9, transparent),url(/img/custom/lnd.png);"
         >
-          <img class="mb-3" src="img/custom/logo.png" alt="logo" height="70" />
+          <router-link to="/">
+            <img class="mb-3" src="img/custom/logo.png" alt="logo" height="70" />
+          </router-link>
+
           <h3 class="txt-bold txt-theme-dk">GET READY.EXPERIENCE CBT</h3>
           <p class="txt-theme-dk">A CBT Experience plaform</p>
         </div>
@@ -219,6 +222,7 @@ export default {
             this.btndisable = false;
             if (resp.data.status == true) {
               this.showSuccessMsg({ message: "Login Successful" });
+              this.$router.push("/app");
             } else {
               this.showWarnMsg({ message: resp.data.message });
 

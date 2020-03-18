@@ -14,7 +14,7 @@
           <hr />
           <div class>
             <h4>Select the subject you would like to start with!</h4>
-            <a href="#" class="btn btn-primary text-white mt-3">Proceed</a>
+            <router-link to="/app/question" class="btn btn-primary text-white mt-3">Proceed</router-link>
           </div>
         </div>
       </div>
