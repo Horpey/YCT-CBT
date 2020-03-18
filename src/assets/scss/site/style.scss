@@ -87,4 +87,41 @@ html {
   .appview {
     min-height: 75vh;
   }
+
+  .questlist {
+    margin: 0px 0px 20px 0px;
+  }
+
+  .questlink {
+    width: 47px;
+    margin-right: 10px;
+    line-height: 2.95;
+    margin-bottom: 10px;
+    display: inline-block;
+    height: 47px;
+    background: #F3F3F3;
+    color: #54596E;
+    border: 1px solid rgba(101, 105, 114, 0.19);
+    text-align: center;
+    border-radius: 6.87831px;
+  }
+
+  .questactive {
+    background: #B1F0CC;
+    border: 1px solid #279355;
+  }
+
+  .questionanswered {
+    background: #097B3A;
+    border: 1px solid #0D7038;
+    color: white;
+  }
+
+  .learntopics span {
+    margin-right: 6px;
+  }
+
+  .hiddrop::after {
+    display: none;
+  }
 }
